@@ -1,0 +1,26 @@
+.form-header .subtitle {
+    color: #707070;
+}
+
+.form .input-box {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input-box label {
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.form .input-box input {
+    position: relative;
+    outline: none;
+    color: #707070;
+    border: 1px solid #ddd;
+}
+
+
+/* .form button {
+    height: 55px;
+    margin-top: 30px;
+} */

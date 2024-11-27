@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Orçamento
+{% endblock %}
+
+{% block content %}
+  <div class="container w-50">
+    <div>
+      <div class="form-header">
+        <h1 class="poppins-bold">Seu orçamento</h1>
+        <p class="subtitle">Preencha os dados abaixo</p>
+      </div>
+
+      <div>
+        <form action="." method="POST" class="form">
+          {% csrf_token %}
+          <div class="d-flex flex-column">
+            <div class="input-box">
+              <label for="nome">Seu nome completo</label>
+              <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome completo" required />
+            </div>
+
+            <div class="input-box">
+              <label for="recipient">Seu email</label>
+              <input type="email" class="form-control" name="recipient" id="recipient" placeholder="seuemail@gmail.com" required />
+            </div>
+
+            <div class="input-box">
+              <label for="fatura">Preço da sua fatura</label>
+              <div class="input-group">
+                <span class="input-group-text">R$</span>
+                <input type="text" class="money form-control" name="fatura" id="fatura" placeholder="0,00" required />
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <button type="submit" class="btn btn-primary">Concluir</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

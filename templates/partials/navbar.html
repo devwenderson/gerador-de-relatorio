@@ -1,0 +1,131 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg mb-5 navbar-dark" style="background-color: #00509d;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index' %}">Renova Solar</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto d-flex align-items-baseline gap-2">
+        {% comment %}Admin{% endcomment %}
+        {% if user.is_staff %}
+          <li class="dropdown btn btn-warning">
+            <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
+
+            <ul class="dropdown-menu mega-menu">
+              <div class="row">
+                <div class="col-md-6">
+                  <li>
+                    <h6 class="dropdown-header px-3">Obra</h6>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'create-work' %}">Cadastrar obra</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'list-works' %}">Listar obras</a>
+                  </li>
+                </div>
+
+                <div class="col-md-6">
+                  <li>
+                    <h6 class="dropdown-header px-3">Local</h6>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'create-location' %}">Cadastrar local</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'list-locations' %}">Listar locais</a>
+                  </li>
+                </div>
+              </div>
+            </ul>
+          </li>
+        {% endif %}
+
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'index' %}">Início</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre nós</a>
+        </li>
+
+        {% comment %}Elétrica{% endcomment %}
+        <li class="dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Elétrica</a>
+
+          <ul class="dropdown-menu mega-menu">
+            <div class="row">
+              <div class="col-md-6">
+                <li>
+                  <h6 class="dropdown-header px-3">Elétrica</h6>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Instalações</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">S.P.D.A.</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Automação</a>
+                </li>
+              </div>
+
+              <div class="col-md-6">
+                <li>
+                  <h6 class="dropdown-header px-3">Solar</h6>
+                </li>
+                <li>
+                  <a href="#" class="dropdown-item">Limpeza e inspeção</a>
+                </li>
+                <li>
+                  <a href="#" class="dropdown-item">A.R.T. e homologação</a>
+                </li>
+                <li>
+                  <a href="#" class="dropdown-item">Serviço de instalação</a>
+                </li>
+              </div>
+            </div>
+          </ul>
+        </li>
+
+        {% comment %}Civil{% endcomment %}
+        <li class="dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Civil</a>
+
+          <ul class="dropdown-menu mega-menu">
+            <div class="row">
+              <div class="col-md-6">
+                <li>
+                  <h6 class="dropdown-header px-3">Civil</h6>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Instalações</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">S.P.D.A.</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Automação</a>
+                </li>
+              </div>
+            </div>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'works-done' %}">Obras feitas</a>
+        </li>
+
+        {% if user.is_staff %}
+          <li class="nav-item">
+            <a class="btn btn-danger" aria-current="page" href="{% url 'logout' %}">Logout</a>
+          </li>
+        {% endif %}
+      </ul>
+
+      <a class="btn btn-warning" href="{% url 'get-report' %}">Faça seu orçamento</a>
+    </div>
+  </div>
+</nav>

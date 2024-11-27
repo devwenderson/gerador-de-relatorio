@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      {% for work in works %}
+        <div class="col-md-6 construction-container">
+          <img src="{{ work.photo.url }}" class="img" />
+          
+          <h6>{{ work.location }}</h6>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

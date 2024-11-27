@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+  Login
+{% endblock %}
+
+{% block content %}
+  <div class="container w-50">
+    <div class="">
+      <div class="form-header">
+        <h1 class="poppins-bold">Login</h1>
+      </div>
+      <div class="form-content">
+        <form method="POST" enctype="multipart/form-data" class="form">
+          {% csrf_token %}
+
+          <div class="d-flex flex-column">
+            {% if form.non_field_errors %}
+              {% for error in form.non_field_errors %}
+                <div class="alert alert-danger font-10" role="alert">{{ error }}</div>
+              {% endfor %}
+            {% endif %}
+
+            <div class="input-box">
+              <label for="">{{ form.username.label }}</label>
+              {% render_field form.username class='form-control' %}
+            </div>
+
+            <div class="input-box">
+              <label for="">{{ form.password.label }}</label>
+              {% render_field form.password class='form-control' %}
+            </div>
+
+            <div class="mt-4">
+              <button type="submit" class="btn btn-primary">Entrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

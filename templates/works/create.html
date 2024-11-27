@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <div class="container w-50">
+    <div class="">
+      <div class="form-header">
+        <h1 class="poppins-bold">Cadastrar obra</h1>
+        <a href="{% url 'create-location' %}" class="btn btn-danger">Criar local</a>
+      </div>
+      <div class="form-content">
+        <form method="POST" enctype="multipart/form-data" class="form" action="{% url 'create-work' %}">
+          {% csrf_token %}
+
+          <div class="d-flex flex-column">
+            <div class="input-box">
+              <label for="">{{ form.location.label }}</label>
+              {% render_field form.location class='form-control' %}
+            </div>
+
+            <div class="input-box">
+              <label for="">{{ form.photo.label }}</label>
+              {% render_field form.photo class='form-control' %}
+            </div>
+
+            <div class="mt-4">
+              <button type="submit" class="btn btn-primary">Concluir</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

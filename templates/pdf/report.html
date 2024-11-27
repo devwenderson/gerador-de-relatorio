@@ -1,0 +1,282 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orçamento</title>
+
+    <style>
+      @page {
+        size: a4 portrait;
+        @frame header_frame {
+          /* Static Frame */
+          -pdf-frame-content: header_content;
+          left: 68pt;
+          width: 450pt;
+          top: 30pt;
+          height: 80pt;
+        }
+        @frame content_frame {
+          /* Content Frame */
+          left: 68pt;
+          width: 450pt;
+          top: 120pt;
+          height: 632pt;
+        }
+        @frame footer_frame {
+          /* Another static Frame */
+          -pdf-frame-content: footer_content;
+          left: 68pt;
+          width: 450pt;
+          top: 760pt;
+          height: 80pt;
+        }
+      }
+      
+      @page regular_template {
+        margin: 1cm;
+      }
+      
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .justify {
+        text-align: justify;
+      }
+      
+      body {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      
+      tbody tr td {
+        padding-top: 4px;
+        text-align: center;
+        border: 1.5px solid #000;
+        font-size: 15px;
+      }
+      
+      tbody tr th {
+        padding-top: 4px;
+        text-align: center;
+        font-weight: bold;
+        border: 1.5px solid #000;
+        background-color: #c0ced6;
+      }
+      
+      .text-align {
+        text-align: center;
+      }
+      
+      .title {
+        font-size: 24px;
+        line-height: 1px;
+      }
+
+      .subtitle {
+        line-height: 1px;
+      }
+      
+      .paragraph {
+        font-size: 16px;
+        text-align: justify;
+      }
+      
+      .alert {
+        font-size: 13px;
+        text-align: justify;
+      }
+      
+      .table-title {
+        width: 230px;
+        text-align: start;
+        padding-left: 10px;
+      }
+
+      .line-height {
+        line-height: 10px;
+      }
+      
+      .footer {
+        font-size: 12px;
+        line-height: 18px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="header_content">
+      <table>
+        <tr>
+          <td style="display: flex; justify-content: center; width: 100%;">
+            <img src="{{ STATIC_URL }}assets/renova_solar_logo.png" width="200px" alt="">
+            <hr>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="footer_content" class="footer">
+      <p>
+        Rua Virgílio de França Monte, 129, <br>
+        Jardins, São Gonçalo do Amarante/RN, <br>
+        59294-039, Telefone: (84) 2139-8716.
+      </p>
+    </div>
+
+    <h1 class="text-align">01 GERADOR FOTOVOLTAICO {{ potencia_gerador }} kWp - R$ 0,00</h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <th class="table-title">Tabela comparativa</th>
+          <th>Mensal</th>
+          <th>Anual</th>
+        </tr>
+        <tr>
+          <th class="table-title">Média de geração</th>
+          <td>{{ media_mensal }} kW/mês</td>
+          <td>{{ media_anual }} kW/ano</td>
+        </tr>
+        <tr>
+          <th class="table-title">Economia potencial(R$)</th>
+          <td>{{ reais_mensais }}</td>
+          <td>{{ reais_anuais }}</td>
+        </tr>
+        <tr>
+          <th class="table-title">Tempo de retorno</th>
+          <td colspan="2">{{ tempo_retorno }} meses</td>
+        </tr>
+        <tr>
+          <th class="table-title">Lucro total do investimento</th>
+          <td colspan="2">{{ valor_projeto }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <tbody>
+        <tr>
+          <th class="table-title">Quantidade de painéis</th>
+          <td>{{ qtd_paineis }}</td>
+        </tr>
+        <tr>
+          <th class="table-title">Potência do gerador</th>
+          <td>{{ potencia_gerador }} kWp</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div>
+      <h1 class="title">1. Apresentação</h1>
+      <p class="paragraph">A Renova Solar está pavimentando um caminho de conquistas, elas contam com a confiança de nossos fornecedores, colaboradores e sobretudo, clientes. Prezamos pela preferência através de muito compromisso e trabalho. O nosso ideal mercadológico hoje é possibilitar o fornecimento de energia observando as diretrizes de melhor custo-benefício, agilidade e autossustentabilidade.</p>
+    </div>
+
+    <div>
+      <h1 class="title">2. Detalhamento do projeto</h1>
+      <h1 class="subtitle">2.1 Produtos</h1>
+      <p>Este gerador de energia é composto por:</p>
+      <ul>
+        <li>16 PAINEIS FOTOVOLTAICOS 560 W</li>
+        <li>1 INVERSOR TRIFÁSICO 380V</li>
+        <li>KIT PARAFUSO, FIXAÇÃO E INSTALAÇÃO</li>
+        <li>CABEAMENTO SUBDIMENSIONADO</li>
+        <li>PLACA DE SINALIZAÇÃO PADRÃO RENOVA SOLAR</li>
+      </ul>
+    </div>
+
+    <br />
+    <br />
+
+    <div>
+      <h1 class="subtitle">2.2 Serviços</h1>
+      <ul>
+        <li>PROJETO DE ENGENHARIA ELÉTRICO DO SISTEMA DE AMPLIAÇÃO DO GERADOR FOTOVOLTAICO</li>
+        <li>ACOMPANHAMENTO DO PROJETO JUNTO A CONCESSIONÁRIA DE ENERGIA</li>
+        <li>SISTEMA DE MONITORAMENTO WEB ATUALIZADO</li>
+        <li>1 LIMPEZA/INSPEÇÃO PREVENTIVA</li>
+      </ul>
+    </div>
+
+    <div>
+      <h1 class="title">3. Considerações Gerais</h1>
+      <h1 class="subtitle">3.1. Alterações no projeto</h1>
+      <p class="paragraph">Toda e qualquer modificação do projeto ou serviço inicial, solicitado pelo cliente, que implique em alterações de características específicas, funções adicionais, reinstalação, ampliação ou outros itens não especificados, serão considerados como adicionais ao produto, devendo seguir cronograma de execução e alocação de recursos, através de nova proposta técnica e comercial.</p>
+    </div>
+
+    <div>
+      <h1 class="subtitle">3.2. Responsabilidade da Renova Solar Energias e Serviços</h1>
+      <p class="paragraph">Toda a negociação, cobrança e recebimento dos valores dos serviços; agendamento de entrega e dos serviços; instalação e desinstalação; prestação de assistência técnica dos produtos e serviços; prestação de serviços de manutenção e suporte técnico; atendimento de garantias; apresentações de ART e autorizações junto à Concessionária de Energia Elétrica local; serão de responsabilidade exclusiva da revenda, e deverão ser realizados pela revenda diretamente ao Cliente.</p>
+    </div>
+
+    <div>
+      <h1 class="subtitle">3.3. Isenção de responsabilidade</h1>
+      <p class="paragraph">A Renova Solar não se responsabiliza por perdas, despesas e danos diretos e indiretos sofridos pelo Cliente em função da execução de serviços de instalação, manutenção e suporte executado por terceiros, seja no período de garantia ou não, também não se responsabiliza por problemas de outros equipamentos que não tenham sido adquiridas em nossa empresa.</p>
+    </div>
+
+    <div>
+      <h1 class="subtitle">3.4. Prazos</h1>
+      <p class="paragraph">O prazo de finalização da instalação vai de 60 a 90 dias, de acordo com o tamanho do sistema e a necessidade de realização de obra civil no local de instalação. Tal prazo deve ser confirmado após avaliação da equipe técnica ao local. No ato da compra dos Produtos, deverá o Cliente indicar o endereço completo para entrega, sendo de sua inteira responsabilidade os dados apresentados. É importante que o cliente tenha um espaço destinado ao recebimento do produto, em local protegido. Caso contrário, mediante informação prévia da situação, o material será mantido em estoque e será levado pela equipe no dia da instalação. Os agendamentos para entrega devem ocorrer em turnos definidos conjuntamente entre a transportadora e Cliente, e em caso de duas tentativas de entrega nos dias agendados, sem sucesso, os custos de entrega passarão ao Cliente. Todos os serviços decorrentes desta Proposta deverão ser agendados diretamente com a Renova Solar. E ao receber o instalador, o cliente deve acompanhar o serviço, e assinar a Ordem de Serviço sempre que solicitado.</p>
+    </div>
+
+    <div>
+      <h1 class="subtitle">3.5. Manutenção</h1>
+      <p class="paragraph">A manutenção dos produtos deve ser realizada de acordo com o Manual do Produto por um técnico especializado. Em caso de dúvidas e suporte, contataremos a revenda.</p>
+    </div>
+
+    <div>
+      <h1 class="subtitle">3.6. Validade da proposta</h1>
+      <p class="paragraph">Esta proposta comercial tem validade de 5 dias ou enquanto durar nosso estoque.</p>
+    </div>
+  
+    <div>
+      <h1 class="title">4. Garantias</h1>
+      <p class="paragraph">As garantias dos produtos e serviços são divididas da seguinte forma: Os prazos de garantia serão contados a partir da data de emissão da respectiva Nota Fiscal e a garantia somente poderá ser acionada mediante apresentação da Nota Fiscal original correspondente ao serviço/produto com defeito. As condições de garantia e respectivas exclusões estão descritas nos Manuais dos Produtos, e deverão ser acionadas junto à Revenda de instalação dos serviços.</p>
+
+      <p class="paragraph">Além de todas as demais previsões dos Manuais dos Produtos e informações apresentadas pela Renova, o Cliente deve estar ciente que qualquer alteração na estrutura, modificação e abertura dos equipamentos, reconfiguração, desinstalação do sistema gerador solar que não seja realizado diretamente pela Renova ou revenda autorizada pela mesma que realizou os serviços de instalação, comprometerá a garantia de toda a solução.</p>
+    </div>
+
+    <div>
+      <p class="alert">*Os módulos têm um prazo total de garantia de 25 anos, sendo 12 anos de fábrica e mais 15 anos de performance. Quanto à capacidade de geração de energia, garante 90% da capacidade de geração durante os 10 primeiros anos e 80% nos outros 15 anos. (Para informação detalhada da garantia de performance, consulte o datasheet do módulo fotovoltaico).</p>
+    </div>
+
+    <table>
+      <tbody>
+        <tr>
+          <th>Garantia</th>
+          <th>Prazos</th>
+        </tr>
+        <tr>
+          <td>Serviço de instalação</td>
+          <td>24 meses</td>
+        </tr>
+        <tr>
+          <td>Módulos</td>
+          <td>10 anos</td>
+        </tr>
+        <tr>
+          <td>Inversor</td>
+          <td>7 anos</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div>
+      <p class="alert" style="margin-top: 50px;">Obs.: A assinatura da proposta indica intenção de adquirir o sistema fotovoltaico da Renova Solar, garantindo a manutenção do valor pelo prazo de 5 dias a contar da data de assinatura.</p>
+
+      <div>
+        <p style="text-align: right;">
+          <b>Essa proposta tem validade de 10 dias.</b> <br>
+          {{ data_hoje }}
+        </p>
+      </div>
+    </div>
+
+    {% comment %}switch page templates{% endcomment %}
+    <pdf:nexttemplate name="regular_template" />
+  </body>
+</html>

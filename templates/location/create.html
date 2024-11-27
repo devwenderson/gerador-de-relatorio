@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <div class="container w-50">
+    <div class="">
+      <div class="form-header">
+        <h1 class="poppins-bold">Cadastrar local</h1>
+      </div>
+      <div class="form-content">
+        <form method="POST" class="form" action="{% url 'create-location' %}">
+          {% csrf_token %}
+
+          <div class="d-flex flex-column">
+            <div class="input-box">
+              <label for="">{{ form.city.label }}</label>
+              {% render_field form.city class='form-control' %}
+            </div>
+
+            <div class="input-box">
+              <label for="">{{ form.state.label }}</label>
+              {% render_field form.state class='form-control' %}
+            </div>
+
+            <div class="mt-4">
+              <button type="submit" class="btn btn-primary">Concluir</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

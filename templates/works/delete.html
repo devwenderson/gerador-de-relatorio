@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <div class="container">
+    <div class="d-flex flex-column align-items-center justify-content-center gap-4 p-5">
+      <h1>Deletar obra - {{ object.pk }}?</h1>
+
+      <div>
+        <img src="{{ object.photo.url }}" style="width: 350px;" />
+      </div>
+
+      <form method="POST" enctype="multipart/form-data" action="{% url 'delete-work' object.pk %}">
+        {% csrf_token %}
+
+        <a href="{% url 'list-works' %}" class="btn btn-primary">Cancelar</a>
+        <button type="submit" class="btn btn-danger">Deletar</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

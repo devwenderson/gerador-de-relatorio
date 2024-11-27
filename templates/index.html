@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Início
+{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row margin-top-100-px hero">
+        <div class="col-md-6 my-auto">
+            <h1 class="poppins-bold">Renova Solar</h1>
+            <p>Energia e serviços</p>
+            <a href="{% url 'get-report' %}" class="btn btn-primary w-50">Faça seu orçamento</a>
+        </div>
+
+        <div class="col-md-6">
+            <img src="{% static 'assets/renova_solar_logo.png' %}" class="hero-img">
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
