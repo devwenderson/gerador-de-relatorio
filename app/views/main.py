@@ -64,14 +64,14 @@ def get_report(request):
         pdf = render_to_pdf("pdf/report.html", data)
         response = HttpResponse(pdf, content_type="application/pdf")
 
-        # subject = "Seu orçamento"
-        # message = f"Olá, {nome}! Seu orçamento está logo abaixo!"
-        # recipient_list = [recipient]
-        # send_email_with_attachment(subject, message, recipient_list, response)
+        subject = "Seu orçamento"
+        message = f"Olá, {nome}! Seu orçamento está logo abaixo!"
+        recipient_list = [recipient]
+        send_email_with_attachment(nome, subject, message, recipient_list, response)
 
         messages.success(request, "Seu orçamento foi enviado no seu email")
-        # return redirect('get-report')
-        return response
+        return redirect('get-report')
+        # return response
     template_name = "report_form.html"
     return render(request, template_name)
 
