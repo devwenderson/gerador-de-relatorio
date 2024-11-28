@@ -23,7 +23,7 @@
 
 /* Index.html */
 .hero-img {
-    width: 100%;
+    width: 50%;
 }
 
 @media screen and (max-width:767px) {

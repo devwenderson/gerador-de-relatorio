@@ -18,9 +18,9 @@ def render_to_pdf(template_src, context_dict={}):
     return None
 
 # Enviar email com anexo
-def send_email_with_attachment(subject, message, recipient_list, file):
+def send_email_with_attachment(nome, subject, message, recipient_list, file):
     mail = EmailMessage(subject=subject, body=message, from_email=settings.EMAIL_HOST_USER, to=recipient_list)
-    mail.attach(filename="Orçamento.pdf", content=file.content, mimetype="application/pdf")
+    mail.attach(filename=f"Orçamento de {nome}.pdf", content=file.content, mimetype="application/pdf")
     mail.send()
 
 

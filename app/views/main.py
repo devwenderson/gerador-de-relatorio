@@ -72,9 +72,7 @@ def get_report(request):
         messages.success(request, "Seu orçamento foi enviado no seu email")
         # return redirect('get-report')
         return response
-
     template_name = "report_form.html"
-
     return render(request, template_name)
 
 @login_required
